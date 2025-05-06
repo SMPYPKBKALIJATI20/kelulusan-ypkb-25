@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Pengumuman Kelulusan SMP YPKB Wangunreja 2024/2025</title>
+  <style>
+    body {{ font-family: Arial, sans-serif; text-align: center; padding: 40px; background-color: #f0f8ff; }}
+    input, button {{ padding: 10px; font-size: 16px; margin: 10px; }}
+    .result {{ margin-top: 30px; font-size: 18px; }}
+    .success {{ color: green; font-weight: bold; }}
+    .fail {{ color: red; font-weight: bold; }}
+  </style>
+</head>
+<body>
+  <h1>Pengumuman Kelulusan</h1>
+  <h2>SMP YPKB Wangunreja Tahun 2024/2025</h2>
+  <p>Masukkan NISN Anda untuk melihat hasil kelulusan.</p>
+  <input type="text" id="nisnInput" placeholder="Contoh: 0084852774">
+  <button onclick="cekKelulusan()">Cek</button>
+
+  <div class="result" id="hasil"></div>
+
+  <script>
+    const dataSiswa = {"0084852774":{"NAMA":"ADIT JUNIAWAN","STATUS":"LULUS","KELAS":"IX"},"0103496024":{"NAMA":"AGUNG M","STATUS":"LULUS","KELAS":"IX"},"0096284742":{"NAMA":"ANDESTIAN IKHWAN S","STATUS":"LULUS","KELAS":"IX"},"0094433311":{"NAMA":"ANDI PRIATNA KUSUMA","STATUS":"LULUS","KELAS":"IX"},"0097905483":{"NAMA":"BAYU ANGGARA","STATUS":"LULUS","KELAS":"IX"},"0098496071":{"NAMA":"DEGIS","STATUS":"LULUS","KELAS":"IX"},"0106008085":{"NAMA":"DESI MAULIDA","STATUS":"LULUS","KELAS":"IX"},"0095272049":{"NAMA":"DONI SETIAWAN","STATUS":"LULUS","KELAS":"IX"},"0107607110":{"NAMA":"DYLLA WIDYA SASMITA","STATUS":"LULUS","KELAS":"IX"},"0073053665":{"NAMA":"FIRMANSAH","STATUS":"LULUS","KELAS":"IX"},"0102872726":{"NAMA":"GILANG SURYA PRATAMA","STATUS":"LULUS","KELAS":"IX"},"0105440402":{"NAMA":"GITA CANTIKA","STATUS":"LULUS","KELAS":"IX"},"0104803469":{"NAMA":"HESTI UTAMI","STATUS":"LULUS","KELAS":"IX"},"0084271188":{"NAMA":"HILDAN APRIANSYAH","STATUS":"TIDAK LULUS","KELAS":"IX"},"0105993337":{"NAMA":"ILHAM FAUJAN","STATUS":"LULUS","KELAS":"IX"},"0097713214":{"NAMA":"IMAN MAULANA","STATUS":"LULUS","KELAS":"IX"},"0099545667":{"NAMA":"INDRIYANA","STATUS":"TIDAK LULUS","KELAS":"IX"},"0106115516":{"NAMA":"JULAEHA FATMAWATI","STATUS":"LULUS","KELAS":"IX"},"0103569349":{"NAMA":"KEMAL RASYA PUTRA","STATUS":"LULUS","KELAS":"IX"},"0102163270":{"NAMA":"LATIPAH","STATUS":"LULUS","KELAS":"IX"},"0105011366":{"NAMA":"LUTHFIYAH A","STATUS":"LULUS","KELAS":"IX"},"0099033434":{"NAMA":"MUHAMAD AL FARIZI","STATUS":"TIDAK LULUS","KELAS":"IX"},"0082225111":{"NAMA":"MUHAMAD ALJABILI","STATUS":"LULUS","KELAS":"IX"},"0109663712":{"NAMA":"MUHAMAD FADILAH S","STATUS":"LULUS","KELAS":"IX"},"0099381530":{"NAMA":"MUHAMAD FAISAL","STATUS":"LULUS","KELAS":"IX"},"0106989288":{"NAMA":"MUHAMAD RIDWAN","STATUS":"TIDAK LULUS","KELAS":"IX"},"0091726968":{"NAMA":"MUTIARA ANINDILA","STATUS":"LULUS","KELAS":"IX"},"0101555314":{"NAMA":"NABILA SALSABILA","STATUS":"LULUS","KELAS":"IX"},"0075995629":{"NAMA":"PUPUT RIANTI","STATUS":"LULUS","KELAS":"IX"},"0109814359":{"NAMA":"PUTRA PERTAMA S","STATUS":"LULUS","KELAS":"IX"},"0106610693":{"NAMA":"RAYSHA HEAVYTA A","STATUS":"LULUS","KELAS":"IX"},"0085630272":{"NAMA":"RESTU MANIK","STATUS":"LULUS","KELAS":"IX"},"0095652811":{"NAMA":"RIJAL HOLIQ","STATUS":"LULUS","KELAS":"IX"},"0098479858":{"NAMA":"RISMAYANTI","STATUS":"LULUS","KELAS":"IX"},"0108649321":{"NAMA":"RISNA SAPUTRA","STATUS":"LULUS","KELAS":"IX"},"0099183411":{"NAMA":"RIZKA AMELIA","STATUS":"LULUS","KELAS":"IX"},"0095197346":{"NAMA":"SRI RAHAYU","STATUS":"LULUS","KELAS":"IX"},"0106591615":{"NAMA":"WEGI MALIK NURSIFYA","STATUS":"LULUS","KELAS":"IX"},"0093574385":{"NAMA":"WINDI AULIA SARI","STATUS":"LULUS","KELAS":"IX"}};
+
+    function cekKelulusan() {{
+      const nisn = document.getElementById("nisnInput").value.trim();
+      const hasil = document.getElementById("hasil");
+
+      if (dataSiswa[nisn]) {{
+        const s = dataSiswa[nisn];
+        hasil.innerHTML = `
+          <p><strong>NISN:</strong> ${nisn}</p>
+          <p><strong>Nama:</strong> ${s.NAMA}</p>
+          <p><strong>Kelas:</strong> ${s.KELAS}</p>
+          <p class="${s.STATUS === 'LULUS' ? 'success' : 'fail'}">
+            <strong>Status:</strong> ${s.STATUS}
+          </p>
+        `;
+      }} else {{
+        hasil.innerHTML = "<p class='fail'>NISN tidak ditemukan!</p>";
+      }}
+    }}
+  </script>
+</body>
+</html>
